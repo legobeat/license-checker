@@ -75,7 +75,7 @@
     "git-contributors": "^0.2.3",
     "github-changes": "^2.0.3",
     "istanbul": "^0.4.3",
-    "jenkins-mocha": "^6.0.0",
+    "jenkins-mocha": "^10.0.0",
     "locale": "^0.1.0",
     "queue": "^4.4.2",
     "rimraf": "^2.6.2"
