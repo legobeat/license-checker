@@ -2,7 +2,7 @@
   "name": "@metamask/license-checker",
   "description": "Check license info for a package",
   "author": "Dav Glass <davglass@gmail.com>",
-  "version": "26.0.0",
+  "version": "26.0.1",
   "contributors": [
     "Adam Weber <adamweber01@gmail.com>",
     "Andrew Couch <andy@couchand.com>",
@@ -113,6 +113,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/MetaMask/license-checker.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "engines": {
     "node": "^12.13.0 || >=14.15.0"

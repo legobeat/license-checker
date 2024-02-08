@@ -1,5 +1,9 @@
 ## Change Log
 
+### v26.0.1
+- [#9](https://github.com/MetaMask/license-checker/pull/9) Update from `spdx-satisfies` to `@metamask/spdx-satisfies`
+- [#8](https://github.com/MetaMask/license-checker/pull/8) Exclude tooling configuration and tests from published package
+
 ### v26.0.0 (2023/11/13)
 - [ba6f7e](https://github.com/MetaMask/license-checker/commit/ba6f7ed0f82a28e44ca327605e84f61e4f975c71) Fork package from `license-checker` to `@metamask/license-checker`
 - [d81a0c](https://github.com/MetaMask/license-checker/commit/d81a0cd79b8df43f696385366234908731ab3e62) **BREAKING:** nopt@4.0.1->6.0.0 (Minimum Node.js version v12)
