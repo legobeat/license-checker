@@ -36,11 +36,11 @@ describe('main tests', function() {
         it('and convert to CSV', function() {
             var str = checker.asCSV(output);
             assert.equal('"module name","license","repository"', str.split('\n')[0]);
-            assert.equal('"@babel/code-frame@7.21.4","MIT","https://github.com/babel/babel"', str.split('\n')[1]);
+            assert.equal('"@ampproject/remapping@2.3.0","Apache-2.0","https://github.com/ampproject/remapping"', str.split('\n')[1]);
         });
         it('and convert to MarkDown', function() {
             var str = checker.asMarkDown(output);
-            assert.equal('[@babel/code-frame@7.21.4](https://github.com/babel/babel) - MIT', str.split('\n')[0]);
+            assert.equal('[@ampproject/remapping@2.3.0](https://github.com/ampproject/remapping) - Apache-2.0', str.split('\n')[0]);
         });
     });
 
@@ -88,7 +88,7 @@ describe('main tests', function() {
 
             var str = checker.asCSV(output, format, "main-module");
             assert.equal('"component","module name","name","description","pewpew"', str.split('\n')[0]);
-            assert.equal('"main-module","@babel/code-frame@7.21.4","@babel/code-frame","Generate errors that contain a code frame that point to source locations.","<<Should Never be set>>"', str.split('\n')[1]);
+            assert.equal('"main-module","@ampproject/remapping@2.3.0","@ampproject/remapping","Remap sequential sourcemaps through transformations to point at the original source code","<<Should Never be set>>"', str.split('\n')[1]);
 
         });
 
@@ -100,7 +100,7 @@ describe('main tests', function() {
             };
 
             var str = checker.asMarkDown(output, format);
-            assert.equal(' - **[@babel/code-frame@7.21.4](https://github.com/babel/babel)**', str.split('\n')[0]);
+            assert.equal('- **[@ampproject/remapping@2.3.0](https://github.com/ampproject/remapping)**', str.split('\n')[0].trim());
         });
     });
 
@@ -110,7 +110,7 @@ describe('main tests', function() {
             checker.init({
                 start: path.join(__dirname, '../'),
                 unknown: true
-            }, function(err, sorted) {
+            }, function(_err, sorted) {
                 output = sorted;
                 done();
             });
@@ -250,11 +250,12 @@ describe('main tests', function() {
 
     describe('should not exit on complete list', function() {
         var result={};
-        before(parseAndFailOn('onlyAllow', '../', "MIT;ISC;MIT;BSD-3-Clause;BSD;Apache-2.0;" +
-            "BSD-2-Clause;Apache*;BSD*;CC-BY-3.0;Unlicense;CC0-1.0;The MIT License;AFLv2.1,BSD;" +
-            "Public Domain;Custom: http://i.imgur.com/goJdO.png;WTFPL*;Apache License, Version 2.0;" +
-            "WTFPL;(MIT AND CC-BY-3.0);Custom: https://github.com/substack/node-browserify;" +
-            "BSD-3-Clause OR MIT;(WTFPL OR MIT)", result));
+        before(parseAndFailOn(
+            'onlyAllow',
+            '../',
+            'Apache-2.0;MIT;ISC;BSD-3-Clause;BSD-3-Clause OR MIT;Python-2.0;CC-BY-4.0;WTFPL;BSD-2-Clause;BSD;BSD*;MIT*;(WTFPL OR MIT);Apache License, Version 2.0;CC-BY-3.0;CC0-1.0;(MIT AND CC-BY-3.0);(MIT OR CC0-1.0)',
+            result
+        ));
 
         it('should not exist if list is complete', function() {
             assert.equal(result.exitCode, 0);

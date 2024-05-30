@@ -7,7 +7,7 @@ describe('bin/license-checker', function() {
 
     it('should restrict the output to the provided packages', function() {
         var restrictedPackages = [
-            'y18n@3.2.1',
+            'y18n@4.0.3',
         ];
         var output = spawn('node', [path.join(__dirname, '../bin/license-checker'), '--json', '--packages', restrictedPackages.join(';')], {
             cwd: path.join(__dirname, '../'),
@@ -18,9 +18,9 @@ describe('bin/license-checker', function() {
 
     it('should exclude provided excludedPackages from the output', function() {
         var excludedPackages = [
-            'readable-stream@1.1.14',
+            'readable-stream@2.3.8',
             'spdx-satisfies@4.0.0',
-            'y18n@3.2.1',
+            'y18n@4.0.3',
         ];
         var output = spawn('node', [path.join(__dirname, '../bin/license-checker'), '--json', '--excludePackages', excludedPackages.join(';')], {
             cwd: path.join(__dirname, '../'),
